@@ -20,6 +20,10 @@ For the first milestone (Level 1), we built the foundation of the Autopay Protoc
 - **Modern Stack:** Scaffolded the application using Vite, React, and TypeScript. Configured `vite-plugin-node-polyfills` to ensure the Stellar SDK's native node modules run perfectly in the browser.
 - **Deployment:** Deployed the MVP live to Firebase Hosting.
 
+### 📸 Screenshots
+- **Successful Testnet Transaction:**
+  <img src="screenshots/Level_1.png" alt="Level 1 Testnet Transaction" width="800" />
+
 ---
 
 ## 📁 Project Structure

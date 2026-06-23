@@ -29,7 +29,7 @@ For the first milestone (Level 1), we built the foundation of the Autopay Protoc
 ## 📁 Project Structure
 
 - **`level-1-white-belt/`**: Wallet + Payments MVP. Connects to Freighter, displays balances, and sends XLM on Stellar testnet.
-- **`level-2-yellow-belt/`**: Subscriptions + Smart Contracts. Integrates multi-wallet support and basic smart contract interactions. *(Pending)*
+- **`level-2-yellow-belt/`**: Subscriptions + Smart Contracts. Integrates multi-wallet support and basic smart contract interactions.
 - **`level-3-orange-belt/`**: Full Recurring Billing Infrastructure. Advanced contracts, event streaming, CI/CD, and testing. *(Pending)*
 - **`production-grade/`**: The complete production Web3 SaaS marketing site and frontend application. *(Scaffolded)*
 

@@ -3,14 +3,18 @@
 This directory contains the **Level 2** implementation of the Autopay Protocol. 
 
 ## 🚀 What We Built
-- **Multi-Wallet Integration:** Replaced the simple Freighter-only integration with `@creit.tech/stellar-wallets-kit`, allowing support for Freighter, Albedo, xBull, and more!
-- **Soroban Smart Contract:** Wrote, compiled, and deployed a Rust-based Soroban smart contract to manage Subscriptions (`create_subscription`, `cancel_subscription`).
-- **Frontend Contract Invocation:** Connected the React frontend to the deployed Soroban contract using the Stellar SDK and Soroban RPC.
-- **Real-Time Event Handling:** Added live polling for `SubscriptionCreated` and `SubscriptionCancelled` events emitted by the smart contract.
-- **Robust Error Handling:** Properly handled three major error states:
-  - `WalletNotConnected` (UI prompt)
-  - `InvalidAmount` (Smart Contract / Validation)
-  - `TransactionRejected` (User declined signature)
+- **Multi-Wallet Integration:** Supported Freighter and MetaMask (using MetaMask Stellar Snap `npm:stellar-snap` for non-custodial key derivation).
+- **Soroban Smart Contract:** Wrote, compiled, and deployed a Rust-based Soroban subscription smart contract managing recurring agreements.
+- **Frontend Contract Invocation:** Connected the React frontend to the contract using the Stellar SDK and Soroban RPC.
+- **Real-Time Event Handling:** Implemented live polling for `SubscriptionCreated` events emitted by the smart contract.
+- **Mobile Responsive UI:** Created custom responsive styles to prevent button leaking on smaller viewports.
+- **Robust Error Handling:** Handled:
+  - `WalletNotFound`: Displays warning if the extension is missing.
+  - `WalletConnectionRejected`: Detects if user declines or cancels connection/signature.
+  - `InsufficientBalance`: Disallows subscribing if the user's XLM balance is below the requested subscription amount.
+
+### 📸 Screenshot
+<img src="screenshots/Level_2.png" alt="Level 2 Smart Contract Subscription" width="800" />
 
 ## 🔗 Live Data
 - **Contract Address:** `CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH`

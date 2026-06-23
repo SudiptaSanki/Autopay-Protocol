@@ -129,8 +129,81 @@ function App() {
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#0f172a", color: "#f8fafc", fontFamily: "'Inter', sans-serif" }}>
+      <style>{`
+        .app-header {
+          padding: 24px 48px;
+          border-bottom: 1px solid #1e293b;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: rgba(15, 23, 42, 0.8);
+          backdrop-filter: blur(12px);
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          flex-wrap: wrap;
+          gap: 16px;
+        }
+
+        .header-actions {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .app-main {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 48px 24px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 48px;
+          align-items: start;
+        }
+
+        @media (max-width: 768px) {
+          .app-header {
+            flex-direction: column;
+            padding: 16px 20px;
+            align-items: stretch;
+            text-align: center;
+          }
+          
+          .app-header > div {
+            justify-content: center;
+          }
+          
+          .header-actions {
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+            gap: 12px !important;
+          }
+          
+          .header-actions button {
+            width: 100%;
+            justify-content: center;
+            padding: 12px 20px !important;
+          }
+          
+          .header-actions > div {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 8px !important;
+          }
+
+          .app-main {
+            grid-template-columns: 1fr;
+            gap: 24px;
+            padding: 24px 16px;
+          }
+        }
+      `}</style>
+
       {/* Header */}
-      <header style={{ padding: "24px 48px", borderBottom: "1px solid #1e293b", display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "rgba(15, 23, 42, 0.8)", backdropFilter: "blur(12px)", position: "sticky", top: 0, zIndex: 10 }}>
+      <header className="app-header">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <div style={{ background: "linear-gradient(135deg, #3b82f6, #8b5cf6)", width: "36px", height: "36px", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Zap size={20} color="white" />
@@ -140,23 +213,25 @@ function App() {
         
         <AnimatePresence mode="wait">
           {!address ? (
-            <motion.div key="connect" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ display: "flex", gap: "12px" }}>
+            <motion.div key="connect" className="header-actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <button onClick={() => handleConnect('freighter')} style={{ display: "flex", alignItems: "center", gap: "8px", background: "#3b82f6", color: "white", padding: "10px 20px", borderRadius: "8px", border: "none", cursor: "pointer", fontWeight: 600, transition: "background 0.2s" }}>
                 <Wallet size={18} /> Freighter
               </button>
-              <button onClick={() => handleConnect('albedo')} style={{ display: "flex", alignItems: "center", gap: "8px", background: "#8b5cf6", color: "white", padding: "10px 20px", borderRadius: "8px", border: "none", cursor: "pointer", fontWeight: 600, transition: "background 0.2s" }}>
-                <Wallet size={18} /> Albedo
+              <button onClick={() => handleConnect('metamask')} style={{ display: "flex", alignItems: "center", gap: "8px", background: "linear-gradient(135deg, #e35714, #f97316)", color: "white", padding: "10px 20px", borderRadius: "8px", border: "none", cursor: "pointer", fontWeight: 600, transition: "background 0.2s" }}>
+                <Wallet size={18} /> MetaMask
               </button>
             </motion.div>
           ) : (
-            <motion.div key="connected" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-              <div style={{ background: "#1e293b", padding: "8px 16px", borderRadius: "8px", border: "1px solid #334155" }}>
-                <span style={{ color: "#94a3b8", fontSize: "14px", marginRight: "8px" }}>Balance:</span>
-                <span style={{ fontWeight: "bold", color: "#60a5fa" }}>{balance} XLM</span>
-              </div>
-              <div style={{ background: "#1e293b", padding: "8px 16px", borderRadius: "8px", border: "1px solid #334155" }}>
-                <span style={{ color: "#94a3b8", fontSize: "14px", marginRight: "8px" }}>Wallet:</span>
-                <span style={{ fontFamily: "monospace", color: "#f8fafc" }}>{address.slice(0, 5)}...{address.slice(-4)}</span>
+            <motion.div key="connected" className="header-actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <div style={{ display: "flex", gap: "8px" }}>
+                <div style={{ background: "#1e293b", padding: "8px 16px", borderRadius: "8px", border: "1px solid #334155" }}>
+                  <span style={{ color: "#94a3b8", fontSize: "14px", marginRight: "8px" }}>Balance:</span>
+                  <span style={{ fontWeight: "bold", color: "#60a5fa" }}>{balance} XLM</span>
+                </div>
+                <div style={{ background: "#1e293b", padding: "8px 16px", borderRadius: "8px", border: "1px solid #334155" }}>
+                  <span style={{ color: "#94a3b8", fontSize: "14px", marginRight: "8px" }}>Wallet:</span>
+                  <span style={{ fontFamily: "monospace", color: "#f8fafc" }}>{address.slice(0, 5)}...{address.slice(-4)}</span>
+                </div>
               </div>
               <button onClick={handleDisconnect} style={{ display: "flex", alignItems: "center", gap: "8px", background: "transparent", color: "#ef4444", border: "1px solid #ef4444", padding: "8px 16px", borderRadius: "8px", cursor: "pointer", fontWeight: 600, transition: "all 0.2s" }}>
                 <LogOut size={16} /> Disconnect
@@ -167,7 +242,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "start" }}>
+      <main className="app-main">
         
         {/* Left Column: Form */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>

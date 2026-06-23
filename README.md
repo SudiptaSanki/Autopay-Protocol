@@ -26,6 +26,23 @@ For the first milestone (Level 1), we built the foundation of the Autopay Protoc
 
 ---
 
+## 🟡 Level 2 MVP: Yellow Belt
+
+For the second milestone (Level 2), we implemented subscription smart contracts, multi-wallet support, and real-time synchronization.
+
+### What We Did:
+- **Multi-Wallet Integration:** Integrated Freighter and MetaMask (via the MetaMask Stellar Snap) using a custom wallet service module.
+- **Soroban Smart Contract:** Created and deployed a Rust smart contract to Testnet (`CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH`) to manage subscription agreements.
+- **Real-Time Synchronisation:** Polled the contract events in the background and rendered contract activity log in real-time.
+- **Mobile Responsive UI:** Upgraded the UI with Framer Motion, layout wrapping, and responsive sizing to prevent button leaks on smaller screens.
+- **Robust Error Handling:** Handled `WalletNotFound` (missing extension), `WalletConnectionRejected` (user denied/closed popups), and `InsufficientBalance` (balance lower than subscription amount).
+
+### 📸 Screenshots
+- **Successful Subscription Creation:**
+  <img src="level-2-yellow-belt/screenshots/Level_2.png" alt="Level 2 Smart Contract Subscription" width="800" />
+
+---
+
 ## 📁 Project Structure
 
 - **`level-1-white-belt/`**: Wallet + Payments MVP. Connects to Freighter, displays balances, and sends XLM on Stellar testnet.

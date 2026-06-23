@@ -1,4 +1,5 @@
 import { isConnected, requestAccess, getAddress, signTransaction } from "@stellar/freighter-api";
+import { Networks } from "@stellar/stellar-sdk";
 
 export const connectWallet = async (): Promise<string | null> => {
   if (!(await isConnected())) {
@@ -7,17 +8,28 @@ export const connectWallet = async (): Promise<string | null> => {
   }
   const access = await requestAccess();
   if (access) {
-    const address = await getAddress();
-    return address;
+    const response = await getAddress();
+    if (response.error) {
+      console.error(response.error);
+      return null;
+    }
+    return response.address;
   }
   return null;
 };
 
 export const getWalletAddress = async (): Promise<string | null> => {
-  return await getAddress();
+  const response = await getAddress();
+  if (response.error) {
+    return null;
+  }
+  return response.address;
 };
 
-export const signTx = async (xdr: string, network: string = "TESTNET"): Promise<string> => {
-  const signedTx = await signTransaction(xdr, { network });
-  return signedTx as string;
+export const signTx = async (xdr: string, networkPassphrase: string = Networks.TESTNET): Promise<string> => {
+  const response = await signTransaction(xdr, { networkPassphrase });
+  if (response.error) {
+    throw new Error(response.error);
+  }
+  return response.signedTxXdr;
 };

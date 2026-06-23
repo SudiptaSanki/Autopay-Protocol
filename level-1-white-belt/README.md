@@ -1,33 +1,40 @@
-# Autopay-Protocol: Level 1 (White Belt)
+# 🌌 Autopay Protocol (Chrona)
 
-This is the first working version of the Chrona / Autopay-Protocol on the Stellar Testnet.
+<div align="center">
+  <p><strong>"The recurring billing layer for Web3."</strong></p>
+  <a href="https://autopay-protocol.web.app" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-autopay--protocol.web.app-blue?style=for-the-badge&logo=firebase" alt="Live Demo" />
+  </a>
+</div>
 
-## Project Description
-A Stellar dApp MVP that connects to the Freighter wallet, displays the connected wallet's XLM balance, and allows the user to send an XLM transaction on the testnet.
+This repository contains the progressive evolution of the Chrona billing engine, building up from a basic wallet integration to a complete production-grade Web3 SaaS application.
 
-## Setup Instructions
+## 🚀 Level 1 MVP: White Belt
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+For the first milestone (Level 1), we built the foundation of the Autopay Protocol on the Stellar Testnet. 
 
-2. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+### What We Did:
+- **Wallet Integration:** Integrated the `@stellar/freighter-api` to securely connect the user's Freighter wallet.
+- **Balance Fetching:** Used the `@stellar/stellar-sdk` to read and display the native XLM balance in real-time.
+- **Testnet Transactions:** Implemented the ability to build, sign, and submit an XLM transfer directly to the Stellar testnet.
+- **Modern Stack:** Scaffolded the application using Vite, React, and TypeScript. Configured `vite-plugin-node-polyfills` to ensure the Stellar SDK's native node modules run perfectly in the browser.
+- **Deployment:** Deployed the MVP live to Firebase Hosting.
 
-3. **Open the app:**
-   Open `http://localhost:5173` in your browser.
+---
 
-4. **Prerequisites:**
-   - Install the [Freighter Wallet](https://www.freighter.app/) extension.
-   - Switch Freighter to the **Testnet** network.
-   - Fund your wallet using the [Stellar Laboratory](https://laboratory.stellar.org/#account-creator?network=test).
+## 📁 Project Structure
 
-## Screenshots
-*(Add screenshots here before submission)*
+- **`level-1-white-belt/`**: Wallet + Payments MVP. Connects to Freighter, displays balances, and sends XLM on Stellar testnet.
+- **`level-2-yellow-belt/`**: Subscriptions + Smart Contracts. Integrates multi-wallet support and basic smart contract interactions. *(Pending)*
+- **`level-3-orange-belt/`**: Full Recurring Billing Infrastructure. Advanced contracts, event streaming, CI/CD, and testing. *(Pending)*
+- **`production-grade/`**: The complete production Web3 SaaS marketing site and frontend application. *(Scaffolded)*
 
-- **Wallet connected state:** `[Insert screenshot of the UI with connected wallet]`
-- **Balance displayed:** `[Insert screenshot showing the XLM balance]`
-- **Successful testnet transaction:** `[Insert screenshot showing the transaction result and hash]`
+## 💡 The Vision
+
+Build a **Web3 subscription billing platform** that lets wallets approve recurring payments once, then allows merchants to collect recurring charges without asking the user to sign every invoice manually.
+
+## 🛠 Technologies
+- **Blockchain:** Stellar SDK, Freighter API, Stellar Wallets Kit, Soroban (Rust)
+- **Frontend:** React, Vite, TypeScript
+- **Styling:** Tailwind CSS, GSAP, Framer Motion
+- **Infrastructure:** Firebase Hosting, Render

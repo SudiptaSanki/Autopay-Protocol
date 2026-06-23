@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
-      <h1>Autopay-Protocol: Level 1 (White Belt)</h1>
+      <h1>Autopay Protocol</h1>
       
       {!address ? (
         <button onClick={handleConnect}>Connect Freighter Wallet</button>

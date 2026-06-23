@@ -1,0 +1,339 @@
+
+# CHRONA - Development Roadmap
+
+Project Structure
+
+chrona/
+│
+├── level-1-white-belt/
+├── level-2-yellow-belt/
+└── level-3-orange-belt/
+
+IMPORTANT RULE:
+Level 2 starts by copying Level 1.
+Level 3 starts by copying Level 2.
+
+This ensures continuous evolution of the same product.
+
+====================================================
+LEVEL 1 — WHITE BELT
+====================================================
+
+Goal:
+Build the first working version of Chrona.
+
+Product Version:
+Subscription Payment Manager MVP
+
+Features:
+- Connect wallet
+- Disconnect wallet
+- Display XLM balance
+- Send XLM transaction
+- Transaction success/failure UI
+
+Suggested Pages:
+
+1. Home
+2. Send Payment
+3. Wallet Dashboard
+
+Folder Structure
+
+src/
+├── components/
+│   ├── Navbar
+│   ├── WalletButton
+│   ├── BalanceCard
+│   └── TransactionForm
+│
+├── pages/
+│   ├── Home
+│   ├── Dashboard
+│   └── Send
+│
+├── services/
+│   ├── freighter.ts
+│   ├── stellar.ts
+│   └── transaction.ts
+│
+└── utils/
+    └── helpers.ts
+
+Milestone 1
+- Install Freighter
+- Configure Stellar Testnet
+- Create project
+
+Milestone 2
+- Connect wallet
+- Disconnect wallet
+- Save address in state
+
+Milestone 3
+- Fetch XLM balance
+- Display balance card
+
+Milestone 4
+- Send testnet payment
+- Display tx hash
+- Display success state
+- Display failure state
+
+Milestone 5
+- README
+- Screenshots
+- GitHub deployment
+
+Submission Output
+- Working wallet connection
+- Working balance checker
+- Working payment sender
+
+====================================================
+LEVEL 2 — YELLOW BELT
+====================================================
+
+Goal:
+Transform wallet app into a real dApp.
+
+Product Version:
+Subscription Authorization Prototype
+
+Start:
+COPY ENTIRE LEVEL 1 PROJECT
+
+New Features
+
+1. Multi-wallet support
+2. Smart contract integration
+3. Real-time contract events
+4. Better transaction monitoring
+5. Error handling
+
+Suggested Pages
+
+1. Home
+2. Dashboard
+3. Create Subscription
+4. Active Subscriptions
+5. Contract Activity Feed
+
+Folder Structure
+
+src/
+├── contracts/
+│   ├── contractClient.ts
+│   └── contractTypes.ts
+│
+├── hooks/
+│   ├── useWallet
+│   ├── useContract
+│   └── useEvents
+│
+├── services/
+│   ├── subscriptions.ts
+│   ├── events.ts
+│   └── transactions.ts
+
+Contract Responsibilities
+
+Contract v1
+
+Functions:
+
+create_subscription()
+cancel_subscription()
+get_subscription()
+
+Events:
+
+SubscriptionCreated
+SubscriptionCancelled
+
+3 Required Errors
+
+WalletNotConnected
+InvalidAmount
+TransactionRejected
+
+Milestone 1
+- Deploy contract on testnet
+
+Milestone 2
+- Connect frontend to contract
+
+Milestone 3
+- Show contract status
+
+Milestone 4
+- Listen for events
+
+Milestone 5
+- Multi-wallet support
+
+Submission Output
+
+- Contract deployed
+- Contract call working
+- Event feed working
+- Transaction status visible
+
+====================================================
+LEVEL 3 — ORANGE BELT
+====================================================
+
+Goal:
+Transform prototype into a production-grade SaaS.
+
+Product Version:
+Chrona Billing Engine
+
+Start:
+COPY ENTIRE LEVEL 2 PROJECT
+
+New Features
+
+1. Subscription Engine
+2. Billing Scheduler
+3. Event Streaming
+4. Testing
+5. CI/CD
+6. Production Architecture
+
+Suggested Pages
+
+Public Website
+
+1. Home
+2. Product
+3. How It Works
+4. Core Engine
+5. Pricing
+6. Docs
+7. Security
+
+Application
+
+8. Dashboard
+9. Subscription Manager
+10. Billing History
+11. Activity Feed
+12. Settings
+
+Backend Structure
+
+backend/
+├── api/
+├── workers/
+├── scheduler/
+├── webhooks/
+├── contracts/
+└── tests/
+
+Core Engine Modules
+
+Authorization Manager
+Plan Manager
+Billing Scheduler
+Retry Service
+Event Streamer
+Revocation Manager
+Audit Logger
+
+Smart Contract V2
+
+create_mandate()
+update_mandate()
+pause_mandate()
+resume_mandate()
+cancel_mandate()
+
+Inter-Contract Communication
+
+Subscription Contract
+Billing Contract
+Treasury Contract
+
+Real-Time Layer
+
+WebSockets
+Contract Events
+Live Notifications
+
+Testing
+
+Contract Tests
+Frontend Tests
+API Tests
+
+Minimum:
+3+ passing tests
+
+CI/CD
+
+GitHub Actions
+
+Pipeline
+
+Lint
+Build
+Test
+Deploy
+
+Deployment
+
+Frontend:
+Firebase Hosting
+
+Backend:
+Render
+
+Database:
+PostgreSQL
+
+Caching:
+Redis
+
+Production Requirements
+
+Mobile responsive
+Loading states
+Error states
+Monitoring
+Logging
+Security checks
+
+Final Demo Features
+
+Create subscription
+Approve subscription
+View status
+Track billing history
+Cancel subscription
+Receive real-time updates
+
+Hackathon Positioning
+
+Payments
+Stablecoins
+Cross-border Finance
+Wallet Infrastructure
+Financial Tooling
+AI Billing
+Stellar Anchors
+
+FINAL PRODUCT VISION
+
+CHRONA
+
+"The recurring billing layer for Web3."
+
+White Belt:
+Wallet + Payments
+
+Yellow Belt:
+Subscriptions + Smart Contracts
+
+Orange Belt:
+Full Recurring Billing Infrastructure

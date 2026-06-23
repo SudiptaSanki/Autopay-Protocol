@@ -75,8 +75,11 @@ export const submitSorobanTransaction = async (signedXdr: string) => {
 };
 
 export const fetchContractEvents = async () => {
-  const response = await sorobanServer.getEvents({
-    startLedger: 0, // In production, limit this
+  const latestLedger = await sorobanServer.getLatestLedger();
+  const startLedger = Math.max(1, latestLedger.sequence - 100);
+
+  const eventsResponse = await sorobanServer.getEvents({
+    startLedger,
     filters: [
       {
         type: "contract",
@@ -88,5 +91,5 @@ export const fetchContractEvents = async () => {
     ],
     limit: 10,
   });
-  return response.events;
+  return eventsResponse.events;
 };

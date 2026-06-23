@@ -12,21 +12,13 @@ export const kit = new StellarWalletsKit({
   ]
 });
 
-export const connectWallet = async (onAddressChange: (address: string) => void): Promise<void> => {
+export const connectWallet = async (id: string, onAddressChange: (address: string) => void): Promise<void> => {
   try {
-    await kit.openModal({
-      onWalletSelected: async (option) => {
-        try {
-          kit.setWallet(option.id);
-          const publicKey = await kit.getPublicKey();
-          onAddressChange(publicKey);
-        } catch (error) {
-          console.error("Wallet connection rejected or failed", error);
-        }
-      }
-    });
+    kit.setWallet(id);
+    const publicKey = await kit.getPublicKey();
+    onAddressChange(publicKey);
   } catch (error) {
-    console.error("Modal error", error);
+    console.error("Wallet connection rejected or failed", error);
   }
 };
 

@@ -31,22 +31,59 @@ function App() {
   }, []);
 
   const handleConnect = async (walletId: string) => {
-    await connectWallet(walletId, async (addr) => {
-      setAddress(addr);
-      const bal = await fetchBalance(addr);
-      setBalance(bal);
-    });
+    setTxStatus("");
+    try {
+      await connectWallet(walletId, async (addr) => {
+        setAddress(addr);
+        const bal = await fetchBalance(addr);
+        setBalance(bal);
+      });
+    } catch (error: any) {
+      console.error("Connection error:", error);
+      const errMsg = error?.message || String(error);
+      if (
+        errMsg.toLowerCase().includes("not connect") ||
+        errMsg.toLowerCase().includes("not install") ||
+        errMsg.toLowerCase().includes("not found") ||
+        errMsg.toLowerCase().includes("is not available")
+      ) {
+        setTxStatus(`Error: WalletNotFound. Please install and enable the ${walletId === "freighter" ? "Freighter" : "Albedo"} extension.`);
+      } else if (
+        errMsg.toLowerCase().includes("user closed") ||
+        errMsg.toLowerCase().includes("rejected") ||
+        errMsg.toLowerCase().includes("declined") ||
+        errMsg.toLowerCase().includes("cancel") ||
+        errMsg.toLowerCase().includes("deny")
+      ) {
+        setTxStatus("Error: WalletConnectionRejected. The connection request was declined.");
+      } else {
+        setTxStatus(`Error: WalletConnectionFailed. ${errMsg}`);
+      }
+    }
   };
 
   const handleDisconnect = () => {
     disconnectWallet();
     setAddress(null);
     setBalance("0");
+    setTxStatus("");
   };
 
   const handleSubscribe = async () => {
     if (!address) {
       setTxStatus("Error: WalletNotConnected. Please connect your wallet first.");
+      return;
+    }
+
+    const parsedAmount = parseFloat(amount);
+    const currentBalance = parseFloat(balance);
+    if (isNaN(parsedAmount) || parsedAmount <= 0) {
+      setTxStatus("Error: InvalidAmount. The amount must be a positive number.");
+      return;
+    }
+
+    if (currentBalance < parsedAmount) {
+      setTxStatus(`Error: InsufficientBalance. Your balance (${balance} XLM) is lower than the subscription amount (${amount} XLM).`);
       return;
     }
     

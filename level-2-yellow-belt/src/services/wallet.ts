@@ -3,7 +3,7 @@ import { StellarWalletsKit, Networks } from '@creit.tech/stellar-wallets-kit';
 import { FreighterModule } from '@creit.tech/stellar-wallets-kit/modules/freighter';
 import { AlbedoModule } from '@creit.tech/stellar-wallets-kit/modules/albedo';
 
-export const kit = new StellarWalletsKit({
+StellarWalletsKit.init({
   network: Networks.TESTNET,
   selectedWalletId: 'freighter',
   modules: [
@@ -14,26 +14,27 @@ export const kit = new StellarWalletsKit({
 
 export const connectWallet = async (id: string, onAddressChange: (address: string) => void): Promise<void> => {
   try {
-    kit.setWallet(id);
-    const publicKey = await kit.getPublicKey();
-    onAddressChange(publicKey);
-  } catch (error) {
+    StellarWalletsKit.setWallet(id);
+    const { address } = await StellarWalletsKit.fetchAddress();
+    onAddressChange(address);
+  } catch (error: any) {
     console.error("Wallet connection rejected or failed", error);
+    throw error;
   }
 };
 
-export const disconnectWallet = () => {
-  // no-op
+export const disconnectWallet = async () => {
+  try {
+    await StellarWalletsKit.disconnect();
+  } catch(e) {}
 };
 
 export const signTx = async (xdr: string): Promise<string> => {
   try {
-    const { signedXDR } = await kit.signTx({
-      xdr,
-      publicKeys: [await kit.getPublicKey()],
-      network: Networks.TESTNET
+    const { signedTxXdr } = await StellarWalletsKit.signTransaction(xdr, {
+      networkPassphrase: Networks.TESTNET
     });
-    return signedXDR;
+    return signedTxXdr;
   } catch (error: any) {
     throw new Error("TransactionRejected");
   }

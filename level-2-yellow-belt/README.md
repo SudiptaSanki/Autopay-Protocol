@@ -20,6 +20,16 @@ This directory contains the **Level 2** implementation of the Autopay Protocol.
 - **Contract Address:** `CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH`
 - **Network:** Stellar Testnet
 
+## 📝 Level 2 Requirements Checklist
+- [x] **3 Error Types Handled**:
+  - `WalletNotFound`: Displays guidance if Freighter or MetaMask extension is missing.
+  - `WalletConnectionRejected`: Detects when user declines or cancels connection/signing.
+  - `InsufficientBalance`: Prevents subscribing if balance is below requested amount.
+- [x] **Contract Deployed on Testnet**: Deployed Rust smart contract to `CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH`.
+- [x] **Contract Called from Frontend**: Invokes `create_subscription` on-chain through the frontend using the Stellar SDK.
+- [x] **Transaction Status Visible**: Displays real-time status flows in the UI (`Pending`, `Success`, `Fail`).
+- [x] **Minimum 2+ Meaningful Commits**: Staged and pushed structured commits for development history.
+
 ## 🛠 Setup Instructions
 1. Navigate to this directory: `cd level-2-yellow-belt`
 2. Install dependencies: `npm install`

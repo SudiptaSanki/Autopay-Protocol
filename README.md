@@ -37,6 +37,16 @@ For the second milestone (Level 2), we implemented subscription smart contracts,
 - **Mobile Responsive UI:** Upgraded the UI with Framer Motion, layout wrapping, and responsive sizing to prevent button leaks on smaller screens.
 - **Robust Error Handling:** Handled `WalletNotFound` (missing extension), `WalletConnectionRejected` (user denied/closed popups), and `InsufficientBalance` (balance lower than subscription amount).
 
+### 📝 Level 2 Requirements Checklist
+- [x] **3 Error Types Handled**:
+  - `WalletNotFound`: Displays guidance if Freighter or MetaMask extension is missing.
+  - `WalletConnectionRejected`: Detects when user declines or cancels connection/signing.
+  - `InsufficientBalance`: Prevents subscribing if balance is below requested amount.
+- [x] **Contract Deployed on Testnet**: Deployed Rust smart contract to `CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH`.
+- [x] **Contract Called from Frontend**: Invokes `create_subscription` on-chain through the frontend using the Stellar SDK.
+- [x] **Transaction Status Visible**: Displays real-time status flows in the UI (`Pending`, `Success`, `Fail`).
+- [x] **Minimum 2+ Meaningful Commits**: Staged and pushed structured commits for development history.
+
 ### 📸 Screenshots
 - **Successful Subscription Creation:**
   <img src="level-2-yellow-belt/screenshots/Level_2.png" alt="Level 2 Smart Contract Subscription" width="800" />

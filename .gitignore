@@ -29,3 +29,14 @@ dist-ssr
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Private planning documents (do not publish)
+subscription_payment_manager_product_plan.md
+chrona_3_level_roadmap.txt
+
+# Rust build artifacts
+**/target/
+
+# Large installer files
+*.exe
+*.tar.gz

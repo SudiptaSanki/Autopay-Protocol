@@ -87,21 +87,76 @@ For the final milestone (Level 3), we built the complete end-to-end production A
 - [x] Production-ready Architecture
 - [x] Documentation & Demo Presentation
 
+### 🐛 Challenges Faced & Error Handling
+While building Level 3, we encountered and solved several real-world production gotchas:
+- **Node.js Versioning with Vite 8:** The GitHub Actions runner defaulted to Node 18, but Vite 8 strictly requires Node 20+. The build failed until we bumped `setup-node` to v20 in our `.github/workflows/level3-ci.yml`.
+- **Invalid Address Formats:** A dummy merchant address of 55 characters was accidentally used instead of the required 56-character string. This caused the `stellar-sdk` and Soroban contract to panic during transaction simulation. We updated to a strictly validated 56-char Testnet address.
+- **WASM `MismatchingParameterLen` Error:** Our frontend initially called `create_subscription` with 5 arguments (Level 3 spec), but the contract deployed at `CC2UJP...` was the Level 2 contract expecting 3 arguments. We caught this via `server.simulateTransaction()`, which threw a `HostError: Error(WasmVm, UnexpectedSize)`. We implemented a hotfix to align the JS parameters with the live deployed contract signature to ensure seamless transaction signing.
+- **Wallet Connection Loading States:** We implemented robust loading states (building → signing → submitting → success/error) and clear UI banners to handle `WalletNotFound` and `WalletConnectionRejected` to ensure the user is never left on a frozen screen.
+
 ### 📸 Screenshots
-- **Home Page — Connected Wallet:**
 
-  <img src="level-3-orange-belt/level3_1.png" alt="Level 3 Home Page" width="800" />
+- **CI/CD Pipeline Running (GitHub Actions):**
 
-- **Dashboard — Active Subscriptions:**
+  <img src="level-3-orange-belt/Level3_cicd.png" alt="Level 3 CI/CD Pipeline" width="800" />
 
-  <img src="level-3-orange-belt/level3_2.png" alt="Level 3 Dashboard" width="800" />
+- **Real Freighter Transaction Prompt:**
+
+  <img src="level-3-orange-belt/Level3_trans1.png" alt="Level 3 Transaction Sign" width="800" />
+
+- **Transaction Confirmation & Receipt:**
+
+  <img src="level-3-orange-belt/Level3_trans2.png" alt="Level 3 Transaction Confirm" width="800" />
 
 ## 💡 The Vision
 
 Build a **Web3 subscription billing platform** that lets wallets approve recurring payments once, then allows merchants to collect recurring charges without asking the user to sign every invoice manually.
 
-## 🛠 Technologies
+## 🛠 Architecture & Tech Stack
+
+```mermaid
+graph TD
+    %% Frontend Layer
+    subgraph Frontend ["Frontend UI"]
+        React["React (Vite)"]
+        Tailwind["Tailwind CSS"]
+        GSAP["Framer Motion"]
+    end
+
+    %% Web3 Connection Layer
+    subgraph Wallets ["Wallet Connection"]
+        Freighter["Freighter Wallet"]
+        MetaMask["MetaMask (Snap)"]
+        SWK["Stellar Wallets Kit"]
+    end
+
+    %% Blockchain Layer
+    subgraph Stellar ["Stellar Blockchain (Testnet)"]
+        Soroban["Soroban Smart Contracts (Rust)"]
+        XLM["Native XLM SAC"]
+        RPC["Stellar RPC Node"]
+    end
+
+    %% Off-chain Layer
+    subgraph Backend ["Off-chain Infrastructure"]
+        Relayer["Node.js Cron Relayer"]
+        Firebase["Firebase Hosting"]
+        GitHub["GitHub Actions (CI/CD)"]
+    end
+
+    %% Relationships
+    React -->|UI State| SWK
+    SWK -->|Sign Tx| Freighter
+    SWK -->|Sign Tx| MetaMask
+    React -->|Read/Submit| RPC
+    Freighter -->|Submit Tx| RPC
+    RPC -->|Execute| Soroban
+    Soroban -->|Transfer| XLM
+    Relayer -->|Trigger Charge| RPC
+    GitHub -->|Auto Build/Deploy| Firebase
+```
+
 - **Blockchain:** Stellar SDK, Freighter API, Stellar Wallets Kit, Soroban (Rust)
 - **Frontend:** React, Vite, TypeScript
 - **Styling:** Tailwind CSS, GSAP, Framer Motion
-- **Infrastructure:** Firebase Hosting, Render
+- **Infrastructure:** Firebase Hosting, GitHub Actions

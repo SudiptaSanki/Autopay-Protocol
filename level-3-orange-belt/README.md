@@ -34,7 +34,7 @@ This project is an end-to-end Stellar dApp with advanced smart contracts, full w
   - [x] Mobile responsive UI (capture from https://autopay-protocol.web.app)
   - [x] CI/CD pipeline running (GitHub Actions tab)
   - [x] Test output with 3+ passing tests (run `cargo test` in contracts/subscription)
-  - [x] Demo video link: [Google Drive Demo Video](https://drive.google.com/file/d/1Egs2nK46LONU7LWTTk_9EhnX6SxHNu9W/view?usp=sharing)
+  - [x] Demo video link: [Google Drive Demo Video](https://drive.google.com/file/d/1mjphggQFwgch-0N9HLgOmPtt0mlbPczt/view?usp=sharing)
 
 ## 🛠 Smart Contract Deployment Workflow
 

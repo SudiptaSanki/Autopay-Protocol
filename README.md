@@ -5,6 +5,9 @@
   <a href="https://autopay-protocol.web.app" target="_blank">
     <img src="https://img.shields.io/badge/Live_Demo-autopay--protocol.web.app-blue?style=for-the-badge&logo=firebase" alt="Live Demo" />
   </a>
+  <a href="https://drive.google.com/file/d/1Egs2nK46LONU7LWTTk_9EhnX6SxHNu9W/view?usp=sharing" target="_blank">
+    <img src="https://img.shields.io/badge/Demo_Video-Watch_Now-red?style=for-the-badge&logo=youtube" alt="Demo Video" />
+  </a>
 </div>
 
 This repository contains the progressive evolution of the Chrona billing engine, building up from a basic wallet integration to a complete production-grade Web3 SaaS application.

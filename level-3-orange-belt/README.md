@@ -30,11 +30,11 @@ This project is an end-to-end Stellar dApp with advanced smart contracts, full w
 - [x] **Live demo link:** https://autopay-protocol.web.app
 - [ ] **Contract deployment address:** `CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH` (Level 2 contract, reused for Level 3)
 - [ ] **Transaction hash for contract interaction:** Provide after making a real subscription from the live app.
-- [ ] **Screenshots:**
-  - Mobile responsive UI (capture from https://autopay-protocol.web.app)
-  - CI/CD pipeline running (GitHub Actions tab)
-  - Test output with 3+ passing tests (run `cargo test` in contracts/subscription)
-  - Demo video link (record a 1-2 min screen capture)
+- [x] **Screenshots:**
+  - [x] Mobile responsive UI (capture from https://autopay-protocol.web.app)
+  - [x] CI/CD pipeline running (GitHub Actions tab)
+  - [x] Test output with 3+ passing tests (run `cargo test` in contracts/subscription)
+  - [x] Demo video link: [Google Drive Demo Video](https://drive.google.com/file/d/1Egs2nK46LONU7LWTTk_9EhnX6SxHNu9W/view?usp=sharing)
 
 ## 🛠 Smart Contract Deployment Workflow
 

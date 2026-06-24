@@ -42,10 +42,8 @@ export const createSubscriptionTx = async (params: SubscriptionParams): Promise<
       contract.call(
         'create_subscription',
         new Address(params.subscriberAddress).toScVal(),
-        new Address(params.merchantAddress).toScVal(),
-        new Address(params.tokenAddress).toScVal(),
         nativeToScVal(params.amount, { type: 'i128' }),
-        nativeToScVal(params.intervalSeconds, { type: 'u64' }),
+        nativeToScVal(params.intervalSeconds, { type: 'u64' })
       )
     )
     .setTimeout(30)

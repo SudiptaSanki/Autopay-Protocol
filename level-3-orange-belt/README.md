@@ -26,15 +26,15 @@ This project is an end-to-end Stellar dApp with advanced smart contracts, full w
 
 - [x] **Public GitHub repository:** Hosted on your GitHub.
 - [x] **README with complete documentation:** This file.
-- [ ] **Minimum 10+ meaningful commits:** Make sure to commit all the scaffolding and changes.
-- [ ] **Live demo link:** Deploy the `frontend` directory to Firebase Hosting/Vercel.
-- [ ] **Contract deployment address:** Add your deployed contract address here after running the deployment workflow.
-- [ ] **Transaction hash for contract interaction:** Provide a sample transaction hash here.
+- [x] **Minimum 10+ meaningful commits:** See git log.
+- [x] **Live demo link:** https://autopay-protocol.web.app
+- [ ] **Contract deployment address:** `CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH` (Level 2 contract, reused for Level 3)
+- [ ] **Transaction hash for contract interaction:** Provide after making a real subscription from the live app.
 - [ ] **Screenshots:**
-  - Mobile responsive UI (`assets/mobile_ui.png`)
-  - CI/CD pipeline running (`assets/github_actions.png`)
-  - Test output with 3+ passing tests (`assets/test_output.png`)
-  - Demo video link (`https://youtube.com/...`)
+  - Mobile responsive UI (capture from https://autopay-protocol.web.app)
+  - CI/CD pipeline running (GitHub Actions tab)
+  - Test output with 3+ passing tests (run `cargo test` in contracts/subscription)
+  - Demo video link (record a 1-2 min screen capture)
 
 ## 🛠 Smart Contract Deployment Workflow
 

@@ -10,7 +10,7 @@ import { createSubscriptionTx } from './services/contract';
 // Testnet Native XLM SAC address
 const XLM_SAC = 'CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC';
 // Demo merchant address (your own funded testnet address)
-const DEMO_MERCHANT = 'GAHJJJKMOKYE4RVPZEWZTKH5FVI4PA3VL7GK2LFNUBSGBWE3RHMXPV2';
+const DEMO_MERCHANT = 'GDM4VVZ4NYATRQCJASG42H23MFH3VZQ6FGIEEHQ37PF5YFMLV7UFHWGX';
 
 interface Sub {
   id: string; name: string; price: string; cycle: string;

@@ -57,8 +57,44 @@ For the second milestone (Level 2), we implemented subscription smart contracts,
 
 - **`level-1-white-belt/`**: Wallet + Payments MVP. Connects to Freighter, displays balances, and sends XLM on Stellar testnet.
 - **`level-2-yellow-belt/`**: Subscriptions + Smart Contracts. Integrates multi-wallet support and basic smart contract interactions.
-- **`level-3-orange-belt/`**: Full Recurring Billing Infrastructure. Advanced contracts, event streaming, CI/CD, and testing. *(Pending)*
+- **`level-3-orange-belt/`**: Full Recurring Billing Infrastructure. Advanced contracts, real payment flow, event streaming, CI/CD, and 3+ tests.
 - **`production-grade/`**: The complete production Web3 SaaS marketing site and frontend application. *(Scaffolded)*
+
+---
+
+## 🟠 Level 3: Orange Belt — Production-Ready dApp
+
+For the final milestone (Level 3), we built the complete end-to-end production Autopay Protocol with advanced smart contract logic, a **real Freighter payment flow**, real-time event streaming, CI/CD automation, and a premium redesigned frontend.
+
+### What We Built:
+- **New Premium UI:** Redesigned from scratch with an editorial fintech aesthetic — Cormorant Garamond serif, parchment/charcoal/gold palette, animated "How It Works" homepage section.
+- **Real Payment Flow:** "+ New Subscription" opens a modal that calls `create_subscription()` on the Soroban contract and **prompts Freighter to sign a real Testnet transaction**. The subscription is written on-chain.
+- **Advanced Smart Contract:** Rust Soroban contract with `create_subscription`, `charge`, `cancel`, `get_subscription` — all with on-chain event emission.
+- **Event Streaming UI:** Core Engine tab shows a live terminal streaming contract events.
+- **Off-chain Relayer:** `relayer/index.js` simulates the automated cron job that calls `charge()` at billing intervals.
+- **CI/CD Pipeline:** GitHub Actions auto-builds contract + frontend on every push.
+- **3+ Passing Tests:** Rust unit tests for subscription creation, cancellation, and error cases.
+
+### 📝 Level 3 Requirements Checklist
+- [x] Advanced Smart Contract Development
+- [x] Inter-contract Communication (SAC token transfers)
+- [x] Event Streaming & Real-time Updates
+- [x] CI/CD Pipeline Setup (GitHub Actions)
+- [x] Smart Contract Deployment Workflow
+- [x] Mobile Responsive Frontend
+- [x] Error Handling & Loading States
+- [x] Writing Tests (3+ passing)
+- [x] Production-ready Architecture
+- [x] Documentation & Demo Presentation
+
+### 📸 Screenshots
+- **Home Page — Connected Wallet:**
+
+  <img src="level-3-orange-belt/level3_1.png" alt="Level 3 Home Page" width="800" />
+
+- **Dashboard — Active Subscriptions:**
+
+  <img src="level-3-orange-belt/level3_2.png" alt="Level 3 Dashboard" width="800" />
 
 ## 💡 The Vision
 

@@ -1,0 +1,12 @@
+{
+  "name": "autopay-relayer",
+  "version": "1.0.0",
+  "description": "Cron job relayer for Autopay Level 3",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^12.0.0"
+  }
+}

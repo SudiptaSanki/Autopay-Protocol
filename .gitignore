@@ -33,6 +33,7 @@ dist-ssr
 # Private planning documents (do not publish)
 subscription_payment_manager_product_plan.md
 chrona_3_level_roadmap.txt
+stellar_hackathon_prompt.md
 
 # Rust build artifacts
 **/target/

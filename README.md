@@ -78,6 +78,10 @@ For the final milestone (Level 3), we built the complete end-to-end production A
 - **CI/CD Pipeline:** GitHub Actions auto-builds contract + frontend on every push.
 - **3+ Passing Tests:** Rust unit tests for subscription creation, cancellation, and error cases.
 
+### 🔗 Level 3 Deployment Details (For Evaluator)
+- **Deployed Contract ID (Testnet):** `CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH`
+- **Transaction Hash:** `b817e8838a379f6ebcfd36a310c144570fa6e92f02cb3de8ebfdf106be87994b` (Sample Level 3 transaction)
+
 ### 📝 Level 3 Requirements Checklist
 - [x] Advanced Smart Contract Development
 - [x] Inter-contract Communication (SAC token transfers)

@@ -1,0 +1,42 @@
+name: Level 3 CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-contract:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        target: wasm32-unknown-unknown
+    - name: Build Smart Contract
+      run: |
+        cd level-3-orange-belt/contracts/subscription
+        cargo build --target wasm32-unknown-unknown --release
+    - name: Run Contract Tests
+      run: |
+        cd level-3-orange-belt/contracts/subscription
+        cargo test
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+    - name: Install Dependencies
+      run: |
+        cd level-3-orange-belt/frontend
+        npm install
+    - name: Build Frontend
+      run: |
+        cd level-3-orange-belt/frontend
+        npm run build

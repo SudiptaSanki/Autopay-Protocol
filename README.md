@@ -31,9 +31,11 @@ For the final milestone (Level 3), we built the complete end-to-end production A
 - **3+ Passing Tests:** Rust unit tests for subscription creation, cancellation, and error cases.
 
 ### 🔗 Level 3 Deployment Details (For Evaluator)
+
+- **Proof of deployed link of testnet:** [https://testnet.stellarexpert.com/contract/CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH](https://testnet.stellarexpert.com/contract/CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH)
 - **Deployed Contract ID (Testnet):** `CC2UJP6YAUW5WXAYOM2227FUYHPY5S2IXMSMC65SVLF6ZHOAVFKVBTDH`
 - **Transaction Hash:** `b817e8838a379f6ebcfd36a310c144570fa6e92f02cb3de8ebfdf106be87994b` (Sample Level 3 transaction)
-- **CI/CD Pipeline Details:** A fully automated GitHub Actions pipeline `.github/workflows/level3-ci.yml` is active and triggers on pushes to the `main` branch. It securely installs the Rust/Soroban toolchain, executes smart contract unit tests via `cargo test`, and builds the Vite frontend bundle.
+- **CI/CD pipeline:** A fully automated GitHub Actions CI/CD pipeline is active and triggers on pushes to the `main` branch. The file is located at [`.github/workflows/ci.yml`](./.github/workflows/ci.yml) (and duplicated at the root as `ci.yml`). It securely installs the Rust/Soroban toolchain, executes smart contract unit tests via `cargo test`, and builds the Vite frontend bundle.
 
 ### 📝 Level 3 Requirements Checklist
 - [x] Advanced Smart Contract Development
